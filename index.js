@@ -1,11 +1,8 @@
-const myLibrary = []
+libraryContainer = document.querySelector('#library');
 
-function Game(title, length, thumb, isFinished) {
-    this.title = title;
-    this.length = length;
-    this.thumb = thumb? 'uploaded image' : 'no image';
-  }
-  
-  function addGameToLibrary() {
-    // do stuff here
-  }
+myLibrary.forEach((item) => {
+    d = document.createElement('div');
+    d.textContent = `${item['title']}`;
+    d.classList.add('card');
+    libraryContainer.appendChild(d);
+})
