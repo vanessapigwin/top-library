@@ -10,7 +10,6 @@
 * {
     margin: 0;
     padding: 0;
-    /* border: solid 1px blue; */
 }
 
 /* layout */
@@ -50,9 +49,11 @@
 }
 
 .footer {
-    padding: var(--default-pad);
+    padding: 10px;
     display: flex;
     justify-content: center;
+    gap: var(--default-pad);
+    align-items: center;
 }
 
 .my-modal {
@@ -75,8 +76,12 @@
     gap: var(--default-pad);
 }
 
-button {
+button{
     height: 50px;
+}
+
+a > img{
+    height: 40px;
 }
 
 #add-game-form {
@@ -99,6 +104,7 @@ button {
 }
 
 .button-tray > button {
+    margin-top: var(--default-pad);
     flex: 1;
 }
 

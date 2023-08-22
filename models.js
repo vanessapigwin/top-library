@@ -4,7 +4,7 @@ function Game(title, howLong, wasPlayed) {
     this.title = title;
     this.howLong = howLong;
     this.wasPlayed = wasPlayed;
-    this.image = image;
+    // this.image = image;
 }
   
 function addGameToLibrary(game) {
@@ -15,14 +15,14 @@ const game1 = new Game(
     title = 'VRChat',
     howLong = 'infinite',
     wasPlayed = false,
-    image = 'No image'
+    // image = 'No image'
 );
 
 const game2 = new Game(
     title = 'Beat Saber',
     howLong = 'infinite',
     wasPlayed = true,
-    image = 'No image'
+    // image = 'No image'
 );
 
 addGameToLibrary(game1);

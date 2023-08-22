@@ -7,6 +7,7 @@ Lesson covering javascript objects
 - [x] Create the layout
 - [x] Create modal-form layout
 - [x] Add new book button that will summon form
-- [ ] Make the form work
+- [x] Make the form work -  add a book
+- [ ] Design card of each book
 - [ ] Add button and function on each book's display to allow removal from library
 - [ ] Add button and function on each book's display to update read status
