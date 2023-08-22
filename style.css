@@ -49,6 +49,29 @@
     justify-content: center;
 }
 
+.my-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modal-content {
+    margin: auto;
+    padding: var(--default-pad);
+    width: 30%;
+}
+
+.add-game-form {
+    display: flex;
+    flex-direction: column;
+    gap:var(--default-pad);
+}
+
 @media only screen and (min-width: 1080px) {
     .library-container {
         flex: 1;
@@ -79,9 +102,19 @@ body {
     color:var(--theme-white)
 }
 
+.my-modal {
+    background-color: #171a21bd;
+}
+
+.modal-content {
+    color: var(--theme-white);
+    background-color: var(--theme-gray);
+}
+
 .card {
+    aspect-ratio: 2/3;
     background-color: var(--theme-white);
-    height: 300px;
+    max-height: 300px;
 }
 
 button {
