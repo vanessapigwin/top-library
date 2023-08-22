@@ -11,29 +11,29 @@
 <body>
     <div class="my-modal">
         <div class="modal-content">
-            <form action="" class="add-game-form">
+            <form id="add-game-form" enctype='multipart/form-data' >
                 <div class="form-row title">Add game</div>
                 <div class="form-row">
                     <label for="title">Title</label>
-                    <input type="text" name="title" id="">
+                    <input type="text" name="title" id="title" required>
                 </div>
                 <div class="form-row">
                     <label for="time-to-beat">Hours to beat</label>
-                    <input type="number" name="time-to-beat" id="">
+                    <input type="number" name="time-to-beat" id="hltb" required>
                 </div>
                 <div class="form-row">
                     <label for="was-played">Played</label>
-                    <input type="checkbox" name="was-played" id="">
+                    <input type="checkbox" name="was-played" id="was-played">
+                </div>
+                <div class="button-tray form-row">
+                    <button class="form-cancel" >
+                        <img src="./assets/close_FILL0_wght400_GRAD0_opsz48.svg">
+                    </button>
+                    <button class="form-add" type="submit">
+                        <img src="./assets/add_FILL0_wght400_GRAD0_opsz48.svg">
+                    </button>
                 </div>
             </form>
-            <div id="button-tray form-row"><button>
-                <button class="form-cancel" >
-                    <img src="./assets/close_FILL0_wght400_GRAD0_opsz48.svg">
-                </button>
-                <button class="form-add" type="submit">
-                    <img src="./assets/add_FILL0_wght400_GRAD0_opsz48.svg">
-                </button>
-            </button></div>
         </div>
     </div>
     <div class="content">

@@ -10,6 +10,7 @@
 * {
     margin: 0;
     padding: 0;
+    /* border: solid 1px blue; */
 }
 
 /* layout */
@@ -68,14 +69,37 @@
 .modal-content {
     margin: auto;
     padding: var(--default-pad);
-    width: clamp(600px, 60%, 100%);
+    width: clamp(200px, 80%, 400px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--default-pad);
 }
 
-.add-game-form {
+button {
+    height: 50px;
+}
+
+#add-game-form {
     display: flex;
     flex-direction: column;
     gap:var(--default-pad);
-    align-self: center;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    justify-items: center;
+}
+
+.button-tray {
+    display: flex;
+    flex-direction: row;
+    gap: var(--default-pad);
+}
+
+.button-tray > button {
+    flex: 1;
 }
 
 @media only screen and (min-width: 1080px) {
@@ -119,6 +143,14 @@ body {
 .modal-content {
     color: var(--theme-white);
     background-color: var(--theme-gray);
+    color: var(--theme-white);
+    font-size: 1.2em;
+}
+
+input {
+    padding: 3px;
+    font-size: 1.2em;
+    height: 30px;
 }
 
 .card {
@@ -136,4 +168,12 @@ button {
 button:hover {
     scale: 1.05;
     transition: 0.2s ease-in-out;
+}
+
+.button-tray > button {
+    background-color:var(--theme-white);
+}
+
+.button-tray > button.form-add {
+    background-color: var(--accent);
 }

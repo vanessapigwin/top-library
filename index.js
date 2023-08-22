@@ -1,8 +1,8 @@
-libraryContainer = document.querySelector('#library');
-formButton = document.querySelector('#add>button');
-modal = document.querySelector('.my-modal');
-modalCancel = document.querySelector('.form-cancel');
-modalAdd = document.querySelector('.form-add');
+const libraryContainer = document.querySelector('#library');
+const formButton = document.querySelector('#add>button');
+const modal = document.querySelector('.my-modal');
+const modalCancel = document.querySelector('.form-cancel');
+const modalAdd = document.querySelector('.form-add');
 
 // render cards
 myLibrary.forEach((item) => {
@@ -23,7 +23,6 @@ function closeForm(e) {
 
 function addEntry(e) {
     console.log(e);
-    closeForm(e);
 }
 
 formButton.addEventListener('click', getForm);
