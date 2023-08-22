@@ -34,6 +34,7 @@
 .library-container {
     flex: 1;
     display: grid;
+    overflow-y: auto;
 }
 
 #library {
@@ -41,6 +42,10 @@
     display: grid;
     gap: var(--default-pad);
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.card {
+    justify-self: center;
 }
 
 .footer {
@@ -63,13 +68,14 @@
 .modal-content {
     margin: auto;
     padding: var(--default-pad);
-    width: 30%;
+    width: clamp(600px, 60%, 100%);
 }
 
 .add-game-form {
     display: flex;
     flex-direction: column;
     gap:var(--default-pad);
+    align-self: center;
 }
 
 @media only screen and (min-width: 1080px) {
@@ -81,6 +87,10 @@
 
     #library {
         grid-column: 2;
+    }
+
+    .modal-content {
+        width: clamp(600px, 60%, 720px);
     }
 }
 
@@ -114,7 +124,7 @@ body {
 .card {
     aspect-ratio: 2/3;
     background-color: var(--theme-white);
-    max-height: 300px;
+    height: 300px;
 }
 
 button {
