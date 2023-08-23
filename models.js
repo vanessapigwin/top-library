@@ -13,14 +13,14 @@ function addGameToLibrary(game) {
 
 const game1 = new Game(
     title = 'VRChat',
-    howLong = 'infinite',
+    howLong = 'Infinite',
     wasPlayed = false,
     image = './assets/games/vrchat.jpg'
 );
 
 const game2 = new Game(
     title = 'Beat Saber',
-    howLong = 'infinite',
+    howLong = 'Infinite',
     wasPlayed = true,
     image = './assets/games/beatsaber.jpg'
 );

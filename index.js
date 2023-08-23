@@ -12,12 +12,11 @@ function createCard(game) {
     const cardFront = document.createElement('div');
     const cardImg = document.createElement('img');
     cardFront.classList.add('card-front');
-    console.log(game);
     cardImg.src = game['image'];
     cardFront.appendChild(cardImg);
 
     const cardBack = document.createElement('div');
-    cardBack.classList.add('card-front');
+    cardBack.classList.add('card-back');
 
     const closeButton = document.createElement('button');
     const buttonIcon = document.createElement('img');
@@ -28,7 +27,7 @@ function createCard(game) {
     const playTime = document.createElement('div');
     const checkbox = document.createElement('input');
 
-    buttonIcon.src = './assets/close_FILL0_wght400_GRAD0_opsz48.svg';
+    buttonIcon.src = './assets/delete_FILL0_wght400_GRAD0_opsz48.svg';
     closeButton.appendChild(buttonIcon);
     
     titleHead.classList.add('title');
@@ -36,11 +35,12 @@ function createCard(game) {
     isPlayedHead.classList.add('title');
     closeButton.appendChild(buttonIcon);
     titleHead.textContent = 'Title';
-    playTimeHead.textContent = 'Time to beat';
+    playTimeHead.textContent = 'Time to beat, hours';
     isPlayedHead.textContent = 'Played';
     title.textContent = game['title'];
     playTime.textContent = game['howLong'];
     checkbox.type = 'checkbox';
+    checkbox.checked = game['wasPlayed'];
 
     cardBack.appendChild(closeButton);
     cardBack.appendChild(titleHead);
@@ -51,8 +51,11 @@ function createCard(game) {
     cardBack.appendChild(checkbox);
 
     card.appendChild(cardFront);
-    // card.appendChild(cardBack);
+    card.appendChild(cardBack);
+    cardBack.classList.toggle('hidden');
     libraryContainer.appendChild(card);
+    
+    card.addEventListener('click', toggleCard);
 }
 
 function getForm() {
@@ -64,6 +67,23 @@ function closeForm(e) {
     modal.classList.toggle('visible');
 }
 
+function toggleCard(e) {
+    e.stopPropagation();
+    const front = this.querySelector('.card-front');
+    const back = this.querySelector('.card-back');
+    console.log(e)
+    if (e.target instanceof HTMLInputElement) {
+        console.log('update wasPlayed')
+    }
+    // else if (e.target instanceof HTMLImageElement && ) {
+    //     console.log('delete card')
+    // }
+    else {
+        front.classList.toggle('hidden');
+        back.classList.toggle('hidden');
+    }
+}
+
 myLibrary.forEach((game) => createCard(game));
 formButton.addEventListener('click', getForm);
 modalCancel.addEventListener('click', closeForm);
@@ -71,18 +91,20 @@ modal.addEventListener('click', (e) => {
     if (e.target.classList.contains('my-modal'))
         closeForm(e);
 });
+
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     new FormData(form, modalAdd);
     closeForm(e);
 });
+
 form.addEventListener('formdata', (e) => {
     const data = Array.from(e.formData.values())
     const game = new Game(
         title = data[0],
         howLong = data[1],
+        wasPlayed = (data.length > 3)? true : false,
         image = URL.createObjectURL(data[2]),
-        wasPlayed = (data.length > 3)? true : false
     );
     createCard(game);
 });

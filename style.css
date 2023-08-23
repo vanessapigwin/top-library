@@ -117,6 +117,7 @@
 }
 
 .card-back {
+    margin-top: 5px;
     flex: 1;
     box-sizing: content-box;
     padding: 0 10px 10px 10px;
@@ -126,6 +127,13 @@
     gap: 15px;
 }
 
+.card-front.hidden,
+.card-back.hidden {
+    display: none;
+    transition: var(--theme-transition);
+    pointer-events: none;
+}
+
 a > img,
 .card-back > button > img {
     height: 30px;
@@ -133,7 +141,7 @@ a > img,
 }
 
 .card-back > button {
-    align-self:self-end
+    align-self:self-end;
 }
 
 @media only screen and (min-width: 1080px) {
@@ -148,7 +156,7 @@ a > img,
     }
 
     .modal-content {
-        width: clamp(600px, 60%, 720px);
+        width: 400px;
     }
 }
 
@@ -191,6 +199,7 @@ input {
     aspect-ratio: 2/3;
     background-color: var(--theme-white);
     height: 300px;
+    color: var(--theme-black)
 }
 
 button {
@@ -204,6 +213,7 @@ button:hover,
 .card:hover {
     scale: 1.05;
     transition: var(--theme-transition);
+    cursor: pointer;
 }
 
 .button-tray > button {
