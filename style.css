@@ -21,14 +21,10 @@
     justify-items: center;
 }
 
-.header {
-    padding: var(--default-pad);
-    text-align: center;
-}
-
+.header,
 #add {
-    align-self: center;
     padding: var(--default-pad);
+    align-self: center;
 }
 
 .library-container {
@@ -94,7 +90,7 @@ button{
 }
 
 a > img{
-    height: 40px;
+    height: 30px;
 }
 
 #add-game-form {
@@ -176,6 +172,7 @@ input {
     aspect-ratio: 2/3;
     background-color: var(--theme-white);
     height: 300px;
+    cursor: pointer;
 }
 
 button {
@@ -195,4 +192,10 @@ button:hover {
 
 .button-tray > button.form-add {
     background-color: var(--accent);
+}
+
+.title {
+    font-size: 1.2em;
+    font-weight: bold;
+    align-self: center;
 }
