@@ -218,3 +218,15 @@ button:hover,
     font-size: 1.1em;
     font-weight: bold;
 }
+
+input[type='file'] {
+    font-size: 1em;
+    color: var(--theme-white);
+}
+
+input[type='file']::file-selector-button {
+    color: var(--theme-black);
+    background-color: var(--theme-white);
+    vertical-align: middle;
+    border: none;
+}
