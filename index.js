@@ -6,13 +6,52 @@ const modalAdd = document.querySelector('.form-add');
 const form = document.querySelector('#add-game-form');
 
 function createCard(game) {
-    card = document.createElement('div');
+    const card = document.createElement('div');
     card.classList.add('card');
 
-    title = document.createElement('div');
-    title.textContent = `Title: ${game['title']}`;
+    const cardFront = document.createElement('div');
+    const cardImg = document.createElement('img');
+    cardFront.classList.add('card-front');
+    console.log(game);
+    cardImg.src = game['image'];
+    cardFront.appendChild(cardImg);
 
-    card.appendChild(title);
+    const cardBack = document.createElement('div');
+    cardBack.classList.add('card-front');
+
+    const closeButton = document.createElement('button');
+    const buttonIcon = document.createElement('img');
+    const titleHead = document.createElement('div');
+    const playTimeHead = document.createElement('div');
+    const isPlayedHead = document.createElement('div');
+    const title = document.createElement('div');
+    const playTime = document.createElement('div');
+    const checkbox = document.createElement('input');
+
+    buttonIcon.src = './assets/close_FILL0_wght400_GRAD0_opsz48.svg';
+    closeButton.appendChild(buttonIcon);
+    
+    titleHead.classList.add('title');
+    playTimeHead.classList.add('title');
+    isPlayedHead.classList.add('title');
+    closeButton.appendChild(buttonIcon);
+    titleHead.textContent = 'Title';
+    playTimeHead.textContent = 'Time to beat';
+    isPlayedHead.textContent = 'Played';
+    title.textContent = game['title'];
+    playTime.textContent = game['howLong'];
+    checkbox.type = 'checkbox';
+
+    cardBack.appendChild(closeButton);
+    cardBack.appendChild(titleHead);
+    cardBack.appendChild(title);
+    cardBack.appendChild(playTimeHead);
+    cardBack.appendChild(playTime);
+    cardBack.appendChild(isPlayedHead);
+    cardBack.appendChild(checkbox);
+
+    card.appendChild(cardFront);
+    // card.appendChild(cardBack);
     libraryContainer.appendChild(card);
 }
 
@@ -42,7 +81,8 @@ form.addEventListener('formdata', (e) => {
     const game = new Game(
         title = data[0],
         howLong = data[1],
-        wasPlayed = (data.length > 2)? true : false
+        image = URL.createObjectURL(data[2]),
+        wasPlayed = (data.length > 3)? true : false
     );
     createCard(game);
 });

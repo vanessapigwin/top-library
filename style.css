@@ -5,11 +5,13 @@
     --theme-white: #c7d5e0;
     --accent: #66c0f4;
     --default-pad: 20px;
+    --theme-transition: 0.3s cub5ic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 * {
     margin: 0;
     padding: 0;
+    /* border: solid 1px rebeccapurple */
 }
 
 /* layout */
@@ -40,10 +42,6 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
-.card {
-    justify-self: center;
-}
-
 .footer {
     padding: 10px;
     display: flex;
@@ -63,9 +61,7 @@
 
     pointer-events: none;
     opacity: 0;
-    transition:
-        transform 0.3s ease-in-out,
-        opacity 0.3s ease-in-out;
+    transition: var(--theme-transition);
 }
 
 .my-modal.visible {
@@ -83,14 +79,6 @@
     flex-direction: column;
     gap: var(--default-pad);
     transform: translate(-50%, -50%);
-}
-
-button{
-    height: 50px;
-}
-
-a > img{
-    height: 30px;
 }
 
 #add-game-form {
@@ -115,6 +103,37 @@ a > img{
 .button-tray > button {
     margin-top: var(--default-pad);
     flex: 1;
+}
+
+.card {
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-front > img {
+    width: 100% ;
+    object-fit: cover;
+}
+
+.card-back {
+    flex: 1;
+    box-sizing: content-box;
+    padding: 0 10px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+a > img,
+.card-back > button > img {
+    height: 30px;
+    display: flex;
+}
+
+.card-back > button {
+    align-self:self-end
 }
 
 @media only screen and (min-width: 1080px) {
@@ -172,18 +191,19 @@ input {
     aspect-ratio: 2/3;
     background-color: var(--theme-white);
     height: 300px;
-    cursor: pointer;
 }
 
 button {
+    height: 50px;
     background-color: var(--theme-white);
     border: none;
     cursor: pointer;
 }
 
-button:hover {
+button:hover,
+.card:hover {
     scale: 1.05;
-    transition: 0.2s ease-in-out;
+    transition: var(--theme-transition);
 }
 
 .button-tray > button {
@@ -195,7 +215,6 @@ button:hover {
 }
 
 .title {
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: bold;
-    align-self: center;
 }
