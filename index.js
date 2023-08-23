@@ -42,3 +42,5 @@ form.addEventListener('formdata', (e) => {
     );
     createCard(game);
 });
+
+modal.addEventListener('click', (e) => closeForm(e));
