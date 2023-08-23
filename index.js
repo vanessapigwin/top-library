@@ -17,12 +17,12 @@ function createCard(game) {
 }
 
 function getForm() {
-    modal.style.display = 'block';
+    modal.classList.toggle('visible');
 }
 
 function closeForm(e) {
     e.preventDefault();
-    modal.style.display = 'none';
+    modal.classList.toggle('visible');
 }
 
 myLibrary.forEach((game) => createCard(game));
