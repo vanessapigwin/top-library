@@ -28,6 +28,7 @@ function closeForm(e) {
 myLibrary.forEach((game) => createCard(game));
 formButton.addEventListener('click', getForm);
 modalCancel.addEventListener('click', closeForm);
+modal.addEventListener('click', (e) => closeForm(e));
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     new FormData(form, modalAdd);
@@ -42,5 +43,3 @@ form.addEventListener('formdata', (e) => {
     );
     createCard(game);
 });
-
-modal.addEventListener('click', (e) => closeForm(e));
