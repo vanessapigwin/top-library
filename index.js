@@ -28,7 +28,10 @@ function closeForm(e) {
 myLibrary.forEach((game) => createCard(game));
 formButton.addEventListener('click', getForm);
 modalCancel.addEventListener('click', closeForm);
-modal.addEventListener('click', (e) => closeForm(e));
+modal.addEventListener('click', (e) => {
+    if (e.target.classList.contains('my-modal'))
+        closeForm(e);
+});
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     new FormData(form, modalAdd);
