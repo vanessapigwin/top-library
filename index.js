@@ -56,18 +56,18 @@ function createCard(game, idx) {
     cardBack.classList.toggle('hidden');
     libraryContainer.appendChild(card);
     
-    card.addEventListener('click', (e) => toggleCard(e, game, card));
-    console.log(idx)
+    card.addEventListener('click', (e) => toggleCard(e, game, card, idx));
 }
 
-function toggleCard(e, game, card) {
+function toggleCard(e, game, card, idx) {
     e.stopPropagation();
     const front = card.querySelector('.card-front');
     const back = card.querySelector('.card-back');
     if (e.target instanceof HTMLInputElement)
         game['wasPlayed'] = e.target.checked;
     else if (e.target.classList.contains('card-close-button')) {
-        console.log(game, 'delete card');
+        myLibrary.splice(idx, 1);
+        card.remove();
     }
     else {
         front.classList.toggle('hidden');
