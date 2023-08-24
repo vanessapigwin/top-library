@@ -28,6 +28,7 @@ function createCard(game) {
     const checkbox = document.createElement('input');
 
     buttonIcon.src = './assets/delete_FILL0_wght400_GRAD0_opsz48.svg';
+    buttonIcon.classList.add('card-close-button');
     closeButton.appendChild(buttonIcon);
     
     titleHead.classList.add('title');
@@ -55,7 +56,7 @@ function createCard(game) {
     cardBack.classList.toggle('hidden');
     libraryContainer.appendChild(card);
     
-    card.addEventListener('click', toggleCard);
+    card.addEventListener('click', (e) => toggleCard(e, game, card));
 }
 
 function getForm() {
@@ -67,17 +68,16 @@ function closeForm(e) {
     modal.classList.toggle('visible');
 }
 
-function toggleCard(e) {
+function toggleCard(e, game, card) {
     e.stopPropagation();
-    const front = this.querySelector('.card-front');
-    const back = this.querySelector('.card-back');
-    console.log(e)
+    const front = card.querySelector('.card-front');
+    const back = card.querySelector('.card-back');
     if (e.target instanceof HTMLInputElement) {
-        console.log('update wasPlayed')
+        console.log(game, 'update wasPlayed');
     }
-    // else if (e.target instanceof HTMLImageElement && ) {
-    //     console.log('delete card')
-    // }
+    else if (e.target.classList.contains('card-close-button')) {
+        console.log(game, 'delete card');
+    }
     else {
         front.classList.toggle('hidden');
         back.classList.toggle('hidden');
