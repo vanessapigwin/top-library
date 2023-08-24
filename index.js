@@ -60,7 +60,6 @@ function createCard(game, idx) {
 }
 
 function toggleCard(e, game, card, idx) {
-    e.stopPropagation();
     const front = card.querySelector('.card-front');
     const back = card.querySelector('.card-back');
     if (e.target instanceof HTMLInputElement)
