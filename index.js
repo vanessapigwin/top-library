@@ -5,7 +5,7 @@ const modalCancel = document.querySelector('.form-cancel');
 const modalAdd = document.querySelector('.form-add');
 const form = document.querySelector('#add-game-form');
 
-function createCard(game) {
+function createCard(game, idx) {
     const card = document.createElement('div');
     card.classList.add('card');
 
@@ -57,6 +57,22 @@ function createCard(game) {
     libraryContainer.appendChild(card);
     
     card.addEventListener('click', (e) => toggleCard(e, game, card));
+    console.log(idx)
+}
+
+function toggleCard(e, game, card) {
+    e.stopPropagation();
+    const front = card.querySelector('.card-front');
+    const back = card.querySelector('.card-back');
+    if (e.target instanceof HTMLInputElement)
+        game['wasPlayed'] = e.target.checked;
+    else if (e.target.classList.contains('card-close-button')) {
+        console.log(game, 'delete card');
+    }
+    else {
+        front.classList.toggle('hidden');
+        back.classList.toggle('hidden');
+    }
 }
 
 function getForm() {
@@ -68,36 +84,20 @@ function closeForm(e) {
     modal.classList.toggle('visible');
 }
 
-function toggleCard(e, game, card) {
-    e.stopPropagation();
-    const front = card.querySelector('.card-front');
-    const back = card.querySelector('.card-back');
-    if (e.target instanceof HTMLInputElement) {
-        console.log(game, 'update wasPlayed');
-    }
-    else if (e.target.classList.contains('card-close-button')) {
-        console.log(game, 'delete card');
-    }
-    else {
-        front.classList.toggle('hidden');
-        back.classList.toggle('hidden');
-    }
-}
+myLibrary.forEach((game) => createCard(game, myLibrary.indexOf(game)));
 
-myLibrary.forEach((game) => createCard(game));
-formButton.addEventListener('click', getForm);
 modalCancel.addEventListener('click', closeForm);
 modal.addEventListener('click', (e) => {
     if (e.target.classList.contains('my-modal'))
         closeForm(e);
 });
 
+formButton.addEventListener('click', getForm);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     new FormData(form, modalAdd);
     closeForm(e);
 });
-
 form.addEventListener('formdata', (e) => {
     const data = Array.from(e.formData.values())
     const game = new Game(
@@ -106,5 +106,6 @@ form.addEventListener('formdata', (e) => {
         wasPlayed = (data.length > 3)? true : false,
         image = URL.createObjectURL(data[2]),
     );
-    createCard(game);
+    addGameToLibrary(game)
+    createCard(game, myLibrary.indexOf(game));
 });
