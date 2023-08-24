@@ -81,6 +81,12 @@ function getForm() {
 function closeForm(e) {
     e.preventDefault();
     modal.classList.toggle('visible');
+    clearForm();
+}
+
+function clearForm() {
+    const inputFields = document.querySelectorAll('.form-row>input');
+    inputFields.forEach((input) => { input.value = ''});
 }
 
 if (myLibrary)
@@ -99,13 +105,15 @@ form.addEventListener('submit', (e) => {
     closeForm(e);
 });
 form.addEventListener('formdata', (e) => {
-    const data = Array.from(e.formData.values())
+    const data = Array.from(e.formData.values());
     const game = new Game(
         title = data[0],
         howLong = data[1],
         wasPlayed = (data.length > 3)? true : false,
-        image = URL.createObjectURL(data[2]),
+        image = data[2]['name']
+            ? URL.createObjectURL(data[2]) 
+            : './assets/games/600x900.svg'
     );
-    addGameToLibrary(game)
+    addGameToLibrary(game);
     createCard(game, myLibrary.indexOf(game));
 });
