@@ -36,10 +36,10 @@ function createCard(game, idx) {
     isPlayedHead.classList.add('title');
     closeButton.appendChild(buttonIcon);
     titleHead.textContent = 'Title';
-    playTimeHead.textContent = 'Time to beat, hours';
+    playTimeHead.textContent = 'Time to beat';
     isPlayedHead.textContent = 'Played';
     title.textContent = game['title'];
-    playTime.textContent = game['howLong'];
+    playTime.textContent = `${game['howLong']} hours`;
     checkbox.type = 'checkbox';
     checkbox.checked = game['wasPlayed'];
 

@@ -11,21 +11,87 @@ function addGameToLibrary(game) {
     myLibrary.push(game);
 }
 
-const game1 = new Game(
-    title = 'VRChat',
-    howLong = 'Infinite',
-    wasPlayed = false,
-    image = './assets/games/vrchat.jpg'
-);
+data = [
+    {
+      "Title": "Baba Is You",
+      "time": 7,
+      "wasPlayed": true,
+      "img": "./assets/games/babaisyou.jpg"
+    },
+    {
+      "Title": "Beat Saber",
+      "time": "Infinite",
+      "wasPlayed": true,
+      "img": "./assets/games/beatsaber.jpg"
+    },
+    {
+      "Title": "Fall Out New Vegas",
+      "time": 27,
+      "wasPlayed": false,
+      "img": "./assets/games/falloutnv.jpg"
+    },
+    {
+      "Title": "Firewatch",
+      "time": 4,
+      "wasPlayed": true,
+      "img": "./assets/games/firewatch.jpg"
+    },
+    {
+      "Title": "Garry's Mod",
+      "time": "Infinite",
+      "wasPlayed": false,
+      "img": "./assets/games/gmod.jpg"
+    },
+    {
+      "Title": "Untitled Goose Game",
+      "time": 3,
+      "wasPlayed": true,
+      "img": "./assets/games/goosegame.jpg"
+    },
+    {
+      "Title": "Night In The Woods",
+      "time": 9,
+      "wasPlayed": true,
+      "img": "./assets/games/nightinthewoods.jpg"
+    },
+    {
+      "Title": "Papers, Please",
+      "time": 5,
+      "wasPlayed": true,
+      "img": "./assets/games/papersplease.jpg"
+    },
+    {
+      "Title": "Phasmophobia",
+      "time": "Infinite",
+      "wasPlayed": true,
+      "img": "./assets/games/phasmophobia.jpg"
+    },
+    {
+      "Title": "Elder Scrolls: Skyrim",
+      "time": 26,
+      "wasPlayed": true,
+      "img": "./assets/games/skyrim.jpg"
+    },
+    {
+      "Title": "Undertale",
+      "time": 7,
+      "wasPlayed": true,
+      "img": "./assets/games/undertale.jpg"
+    },
+    {
+      "Title": "VRChat",
+      "time": "Infinite",
+      "wasPlayed": true,
+      "img": "./assets/games/vrchat.jpg"
+    }
+]
 
-const game2 = new Game(
-    title = 'Beat Saber',
-    howLong = 'Infinite',
-    wasPlayed = true,
-    image = './assets/games/beatsaber.jpg'
-);
-
-addGameToLibrary(game1);
-addGameToLibrary(game2);
-
-console.log('Items in library: ', myLibrary);
+data.forEach((entry) => {
+    const game = new Game(
+        title = entry['Title'],
+        howLong = entry['time'],
+        wasPlayed = entry['wasPlayed'],
+        image = entry['img']
+    )
+    addGameToLibrary(game);
+})
