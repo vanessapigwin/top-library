@@ -83,7 +83,8 @@ function closeForm(e) {
     modal.classList.toggle('visible');
 }
 
-myLibrary.forEach((game) => createCard(game, myLibrary.indexOf(game)));
+if (myLibrary)
+    myLibrary.forEach((game) => createCard(game, myLibrary.indexOf(game)));
 
 modalCancel.addEventListener('click', closeForm);
 modal.addEventListener('click', (e) => {
