@@ -1,6 +1,8 @@
 # The Odin Project: Library App
 Lesson covering javascript objects
 
+Live: https://vanessapigwin.github.io/top-library/
+
 # Output
 ![Game Library](./assets/library.png)
 
