@@ -1,17 +1,14 @@
 const myLibrary = []
 
 function Game(title, howLong, wasPlayed, image) {
-    this.title = title;
-    this.howLong = howLong;
-    this.wasPlayed = wasPlayed;
-    this.image = image;
+    return {title, howLong, wasPlayed, image}
 }
   
 function addGameToLibrary(game) {
     myLibrary.push(game);
 }
 
-data = [
+const data = [
     {
       "Title": "Baba Is You",
       "time": 7,
@@ -88,10 +85,10 @@ data = [
 
 data.forEach((entry) => {
     const game = new Game(
-        title = entry['Title'],
-        howLong = entry['time'],
-        wasPlayed = entry['wasPlayed'],
-        image = entry['img']
+        entry.Title,
+        entry.time,
+        entry.wasPlayed,
+        entry.img
     )
     addGameToLibrary(game);
 })
