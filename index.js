@@ -89,6 +89,12 @@ function closeForm(e) {
     clearForm();
 }
 
+function showError(elem) {
+    if (elem.validity.valueMissing) {
+        elem.placeholder = 'Game title required'
+    }
+}
+
 if (myLibrary)
     myLibrary.forEach((game) => createCard(game, myLibrary.indexOf(game)));
 
@@ -100,10 +106,17 @@ modal.addEventListener('click', (e) => {
 
 formButton.addEventListener('click', getForm);
 form.addEventListener('submit', (e) => {
+    const titleField = form.querySelector('#title');
+    if (!titleField.validity.valid) {
+        showError(titleField);
+    }
+    else {
+        new FormData(form, modalAdd);
+        closeForm(e);
+    }
     e.preventDefault();
-    new FormData(form, modalAdd);
-    closeForm(e);
 });
+
 form.addEventListener('formdata', (e) => {
     const data = Array.from(e.formData.values());
     const doneChecked = (data.length > 3);
@@ -117,4 +130,12 @@ form.addEventListener('formdata', (e) => {
     );
     addGameToLibrary(game);
     createCard(game, myLibrary.indexOf(game));
+});
+
+// const gameTitle = form.querySelector('#title')
+form.querySelector('#title').addEventListener('input', (e) => {
+    if (!e.target.validity.valid)
+        e.target.placeholder = 'Please add a title'
+    else
+        showError(e.target);  
 });
